@@ -1,5 +1,13 @@
+
+
+
 https://pages.github.ibm.com/tech-academy/cp4aiops/tutorials/instana/instrumentation/
 
+1. Create a new VM and install docker
+https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script
+
+2. 
+install docker agent
 
 #!/bin/bash
 
@@ -22,14 +30,30 @@ sudo docker run \
    icr.io/instana/agent
    
    
+3. verify bookinfo site is up
 
-Issue SSH: call ibm cloud support to open port 22
-
-cd /root/training-bookinfo
-docker-compose up -d --build
+does not seem need to do the below:
 
 Issue 2: open port 9080
 
 sudo ufw allow 9080/tcp
 sudo ufw disable
 sudo ufw enable
+
+
+4. Instrumenting Python App
+cd /root/training-bookinfo
+docker-compose up -d --build
+
+5. Instrucmenting Node.js
+
+6. Instrucmenting Ruby
+
+7. Instrumenting MySQL
+
+docker cp configuration-mysql.yaml 1058a13428ad:/opt/instana/agent/etc/instana/configuration-mysql.yaml
+
+
+
+
+

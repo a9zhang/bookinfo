@@ -1,7 +1,35 @@
 https://pages.github.ibm.com/tech-academy/cp4aiops/tutorials/instana/instrumentation/
 
 
+#!/bin/bash
+
+sudo docker run \
+   --detach \
+   --name instana-agent \
+   --volume /var/run:/var/run \
+   --volume /run:/run \
+   --volume /dev:/dev:ro \
+   --volume /sys:/sys:ro \
+   --volume /var/log:/var/log:ro \
+   --privileged \
+   --net=host \
+   --pid=host \
+   --env="INSTANA_AGENT_ENDPOINT=67.228.227.210" \
+   --env="INSTANA_AGENT_ENDPOINT_PORT=1444" \
+   --env="INSTANA_AGENT_KEY=qUMhYJxjSv6uZh2SyqTEnw" \
+   --env="INSTANA_DOWNLOAD_KEY=qUMhYJxjSv6uZh2SyqTEnw" \
+   --env="INSTANA_AGENT_ZONE=nyc" \
+   icr.io/instana/agent
+   
+   
+
 Issue SSH: call ibm cloud support to open port 22
 
 cd /root/training-bookinfo
 docker-compose up -d --build
+
+Issue 2: open port 9080
+
+sudo ufw allow 9080/tcp
+sudo ufw disable
+sudo ufw enable
